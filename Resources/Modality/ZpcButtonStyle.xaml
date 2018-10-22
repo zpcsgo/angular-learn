@@ -1,0 +1,150 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Resources.Modality"
+                    xmlns:zpc="clr-namespace:Resources.CusControl">
+    <Style x:Key="ZpcButtonBaseStyle" TargetType="{x:Type zpc:ZpcButton}">
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Padding" Value="0"></Setter>
+        <Setter Property="IconColor" Value="White"></Setter>
+        <Setter Property="Cornerradius" Value="5"></Setter>
+        
+    </Style>
+    <!--ZpcButton基础模板-->
+    <ControlTemplate x:Key="ZpcButton_Template" TargetType="{x:Type zpc:ZpcButton}">
+        <Border Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding Cornerradius}"
+                            Padding="{TemplateBinding Padding}">
+            <Grid>
+                <Label x:Name="icon"
+                                   Content="{TemplateBinding Icon}" 
+                                   VerticalContentAlignment="Center" 
+                                   HorizontalContentAlignment="Center" 
+                                   FontFamily="/Resources;component/Fonts/#FontAwesome"
+                                   Foreground="{TemplateBinding IconColor}"
+                                   FontSize="{TemplateBinding IconSize}"
+                                   Padding="5">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Bottom" 
+                                             HorizontalOffset="20" 
+                                             Background="{TemplateBinding Background}"
+                                             Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Content}" 
+                                             Template="{DynamicResource Btn_Tishi}"></ToolTip>
+                    </Label.ToolTip>
+                </Label>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Opacity" Value="0.8"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter  Property="Background" Value="{DynamicResource Color_Button_Enabled}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--提示框模板-->
+    <ControlTemplate x:Key="Btn_Tishi" TargetType="{x:Type ToolTip}">
+        <Border Background="{TemplateBinding Background}" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"  
+                CornerRadius="5" Height="26" Padding="5,0,5,0">
+            <Label Foreground="White" FontSize="12" Content="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Content}"></Label>
+        </Border>
+    </ControlTemplate>
+    
+    <!--刷新-->
+    <Style x:Key="ZpcButton_Refresh" BasedOn="{StaticResource ZpcButtonBaseStyle}" TargetType="{x:Type zpc:ZpcButton}">
+        <Setter Property="Background" Value="{DynamicResource Color_Button_Primary}"></Setter>
+        <Setter Property="Template" Value="{StaticResource ZpcButton_Template}"></Setter>
+    </Style>
+    <!--附件-->
+    <Style x:Key="ZpcButton_Attachment" BasedOn="{StaticResource ZpcButtonBaseStyle}" TargetType="{x:Type zpc:ZpcButton}">
+        <Setter Property="Background" Value="{DynamicResource Color_Button_Success}"></Setter>
+        <Setter Property="Template" Value="{StaticResource ZpcButton_Template}"></Setter>
+    </Style>
+    <!--删除-->
+    <Style x:Key="ZpcButton_Delete" BasedOn="{StaticResource ZpcButtonBaseStyle}" TargetType="{x:Type zpc:ZpcButton}">
+        <Setter Property="Background" Value="{DynamicResource Color_Button_Danger}"></Setter>
+        <Setter Property="Template" Value="{StaticResource ZpcButton_Template}"></Setter>
+    </Style>
+    <!--添加-->
+    <Style x:Key="ZpcButton_Add" BasedOn="{StaticResource ZpcButtonBaseStyle}" TargetType="{x:Type zpc:ZpcButton}">
+        <Setter Property="Background" Value="{DynamicResource Color_Button_Success}"></Setter>
+        <Setter Property="Template" Value="{StaticResource ZpcButton_Template}"></Setter>
+    </Style>
+    <!--修改-->
+    <Style x:Key="ZpcButton_Amend" BasedOn="{StaticResource ZpcButtonBaseStyle}" TargetType="{x:Type zpc:ZpcButton}">
+        <Setter Property="Background" Value="{DynamicResource Color_Button_Warning}"></Setter>
+        <Setter Property="Template" Value="{StaticResource ZpcButton_Template}"></Setter>
+    </Style>
+    <!--上传-->
+    <Style x:Key="ZpcButton_Upload" BasedOn="{StaticResource ZpcButtonBaseStyle}" TargetType="{x:Type zpc:ZpcButton}">
+        <Setter Property="Background" Value="{DynamicResource Color_Button_Primary}"></Setter>
+        <Setter Property="Template" Value="{StaticResource ZpcButton_Template}"></Setter>
+    </Style>
+    <!--预览-->
+    <Style x:Key="ZpcButton_Preview" BasedOn="{StaticResource ZpcButtonBaseStyle}" TargetType="{x:Type zpc:ZpcButton}">
+        <Setter Property="Background" Value="{DynamicResource Color_Button_Success}"></Setter>
+        <Setter Property="Template" Value="{StaticResource ZpcButton_Template}"></Setter>
+    </Style>
+    <!--文字图标的按钮-->
+    <!--ZpcButton基础模板-->
+    <ControlTemplate x:Key="ZpcButton_Template_TextAndIcon" TargetType="{x:Type zpc:ZpcButton}">
+        <Border Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding Cornerradius}"
+                            Padding="{TemplateBinding Padding}">
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="icon"
+                                   Content="{TemplateBinding Icon}" 
+                                   VerticalContentAlignment="Center" 
+                                   HorizontalContentAlignment="Center" 
+                                   FontFamily="/Resources;component/Fonts/#FontAwesome"
+                                   Foreground="{TemplateBinding IconColor}"
+                                   FontSize="{TemplateBinding IconSize}"
+                                   Padding="5">
+                    </Label>
+                    <Label         Content="{TemplateBinding Content}" 
+                                   VerticalContentAlignment="Center" 
+                                   HorizontalContentAlignment="Center" 
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Padding="5">
+                    </Label>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Opacity" Value="0.8"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter  Property="Background" Value="{DynamicResource Color_Button_Enabled}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--确定和取消-->
+    <Style TargetType="zpc:ZpcButton" x:Key="OkaAndCanvas">
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Padding" Value="0"></Setter>
+        <Setter Property="IconColor" Value="White"></Setter>
+        <Setter Property="Cornerradius" Value="5"></Setter>
+        <Setter Property="Template" Value="{DynamicResource ZpcButton_Template_TextAndIcon}"></Setter>
+    </Style>
+</ResourceDictionary>
