@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>指令第一篇</title>
+    <title>Title</title>
     <script src="../../js/angular.min.js"></script>
-    <script src="directive_1.js"></script>
+    <script src="directive_replace_transclude.js"></script>
 </head>
+<body>
 <body ng-app="app">
 <!--自定义一个简单的指令-->
 <div ng-controller="myCtrl">
@@ -16,7 +17,11 @@
     <!--<div class="hello-world"></div>-->
     <!--&lt;!&ndash; directive:hello-world &ndash;&gt;-->
     <!--<div></div>-->
+    <zpc-sgo>
+        <div>这是指令内部的内容</div>
+    </zpc-sgo>
 </div>
 
+</body>
 </body>
 </html>
